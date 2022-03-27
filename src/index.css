@@ -1,0 +1,907 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+body{
+    font-size: 1.125rem;
+}
+
+.home-div{
+    width:100%;
+    min-height:100vh;
+    background:lightblue;
+    /* background: url('./imgs/index_bg.png');
+    background-size: 100% 100%;
+    background-position: center; */
+}
+
+.home-div #home-img{
+    position: absolute;
+    width:65%;
+    height:100%;
+    opacity: 0.5;
+}
+
+.home-div #title-div{
+    position: absolute;
+    top:32%;
+    left:10%;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 3.7rem;
+    font-weight: bold;
+    letter-spacing:1px;
+    /* border:1px solid black; */
+    width:45%;
+    color: #2a2b2dff;
+    /* color: #fcf6f5ff; */
+    text-align:left;
+}
+
+.home-div .login-div{
+    position: absolute;
+    top:22%;
+    right:4%;
+    width:30%;
+    height:55%;
+    background: #fff;
+    border-radius: 5px;
+}
+
+.home-div .login-div #login-icon-div{
+    position: absolute;
+    left:40%;
+    top: 5%;
+    /* border:1px solid black; */
+    width:20%;
+    height:15%;
+    /* border-radius: 50%; */
+    background: url(./imgs/sign_in_icon.png);
+    background-size: 100% 100%;
+    background-position: center;
+}
+
+.home-div .login-div #hr-1,
+.home-div .login-div #hr-2{
+    position: absolute;
+    top:23%;
+    width:30%;
+    background:black;
+}
+.home-div .login-div #hr-1{
+    left:10%;
+}
+
+.home-div .login-div #hr-2{
+    right:10%;
+}
+
+.home-div .login-div #hr-sign-in-lbl{
+    position: absolute;
+    top: 23%;
+    left:44%;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.home-div .login-div form #user-name-input,
+.home-div .login-div form #password-input{
+    position: absolute;
+    left:10%;
+    width:80%;
+    height:12%;
+
+}
+
+.home-div .login-div form #user-name-input{
+    top:35%;
+}
+
+.home-div .login-div form #password-input{
+    top:53%;
+}
+
+input[type=text],
+input[type=password]{
+    padding-left: 25px;
+}
+
+.home-div .login-div form #login-btn{
+    position: absolute;
+    top:71%;
+    left:10%;
+    width:80%;
+    height:12%;
+}
+
+.home-div .login-div #sign-up-lbl{
+    position: absolute;
+    top: 88%;
+    left:43%;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1rem;
+    text-decoration: underline;
+    letter-spacing: 1px;
+    cursor: pointer;
+}
+
+.home-div .login-div #back-btn,
+.home-div .login-div #back-btn-mobile{
+    position: absolute;
+    top:5%;
+    left:5%;
+    width:10%;
+    height:7%;
+    background: url('./imgs/back_btn_mobile.png');
+    background-size: 100% 100%;
+    background-position: center;
+    opacity: 0.5;
+    /* display:none; */
+    cursor: pointer;
+}
+
+.home-div .login-div #back-btn-mobile{
+    display:none;
+}
+
+.home-div .btn-div-mobile{
+    display:none;
+}
+
+/* HOME MAIN COMPONENTS ******************************************************************/
+.home-main-div{
+    width:100%;
+    min-height:100vh;
+    background:#E8ECEF;
+}
+
+.home-main-div .home-header{
+    position:absolute;
+    width:100%;
+    height:8%;
+    background: #9ECEE6;
+}
+
+.home-main-div .home-header label{
+    position:absolute;
+    top:35%;
+    right:3%;
+    color:#f2f2f2;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+    cursor: pointer;
+}
+
+.home-main-div .home-header img{
+    position:absolute;
+    top:10%;
+    left:30%;
+    width:5%;
+    height:80%;
+}
+
+.home-main-div .side-header{
+    position:absolute;
+    width:25%;
+    height:8%;
+    background: #275EA3;
+    display:flex;
+    z-index: 1;
+
+}
+
+.home-main-div .side-header label{
+    margin: 0 auto;
+    margin-top:4%;
+    color:#f2f2f2;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.7rem;
+    letter-spacing: 1px;
+}
+
+.home-main-div .aside-div{
+    position:absolute;
+    top:8%;
+    left:0;
+    width:25%;
+    height:100%;
+    background: #2a2b2dff;
+    /* #2da8d8ff */
+    z-index: 1;
+}
+
+.home-main-div .aside-div .choose-date-lbl{
+    position:absolute;
+    top:45%;
+    left:15%;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.5rem;
+    letter-spacing: 1px;
+    color: #eee;
+    text-transform: uppercase;
+    opacity: 0.1;
+}
+
+.home-main-div .aside-div .main-aside{
+    width:100%;
+    height:100%;
+    background: #2a2b2dff;
+}
+
+.home-main-div .aside-div .main-aside .label{
+    position:absolute;
+    bottom:9%;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 0.65rem;
+    letter-spacing: 1px;
+    color: #eee;
+}
+
+::-webkit-scrollbar {
+    width: 0;  
+    background: transparent; 
+}
+
+.home-main-div .aside-div .main-aside .goal-div{
+    position:absolute;
+    top:13%;
+    width: 100%;
+    height:79%;
+    /* border:1px solid pink; */
+    overflow-y: scroll; 
+}
+
+.home-main-div .aside-div .main-aside .goal-div .goal{
+    position:absolute;
+    left:1.5%;
+    width:97%;
+    height:25%;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.home-main-div .aside-div .main-aside .goal-div .goal-exercise{
+    top:0;
+    background: url(./imgs/main_imgs/goal_exercise.jpg);
+    background-size: 100% 100%;
+    background-position: center;
+}
+
+.home-main-div .aside-div .main-aside .goal-div .goal-skill{
+    top:26%;
+    background: url(./imgs/main_imgs/goal-skill.jpg);
+    background-size: 100% 100%;
+    background-position: center;
+}
+
+.home-main-div .aside-div .main-aside .goal-div .goal-fam-friends{
+    top:52%;
+    background: url(./imgs/main_imgs/goal-fam-friends.jpg);
+    background-size: 100% 100%;
+    background-position: center;
+}
+
+.home-main-div .aside-div .main-aside .goal-div .goal-me-time{
+    top:78%;
+    background: url(./imgs/main_imgs/goal-me-time.jpg);
+    background-size: 100% 100%;
+    background-position: center;
+}
+
+.home-main-div .aside-div .main-aside .goal-div .goal-organize{
+    top:104%;
+    background: url(./imgs/main_imgs/goal-organize.jpg);
+    background-size: 100% 100%;
+    background-position: center;
+}
+
+.home-main-div .aside-div .main-aside .goal-div .goal .label{
+    position:absolute;
+    bottom:5%;
+    left:2%;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.2rem;
+    letter-spacing: 1px;
+    background:#2a2b2dff;
+    opacity: 0.6;
+    border-radius: 5px;
+    color:#eee;
+    width:70%;
+}
+
+.home-main-div .aside-div .main-aside .goal-div .goal .label span{
+    font-size: 0.6rem;
+}
+
+.home-main-div .aside-div .main-aside .goal-div .goal-confirm-div{
+    position:absolute;
+    width:100%;
+    height:95%;
+    /* background:pink; */
+}
+
+.home-main-div .aside-div .main-aside .goal-div .goal-confirm-div .which-exercise,
+.home-main-div .aside-div .main-aside .goal-div .goal-confirm-div .how-often,
+.home-main-div .aside-div .main-aside .goal-div .goal-confirm-div .for-how-long,
+.home-main-div .aside-div .main-aside .goal-div .goal-confirm-div .confirm-goal{
+    position:absolute;
+    top:0;
+    left:2.5%;
+    width:95%;
+    height:20%;
+    border:none;
+    border-bottom:1px solid black;
+}
+
+.home-main-div .aside-div .main-aside .goal-div .goal-confirm-div .which-exercise label,
+.home-main-div .aside-div .main-aside .goal-div .goal-confirm-div .how-often label,
+.home-main-div .aside-div .main-aside .goal-div .goal-confirm-div .for-how-long label,
+.home-main-div .aside-div .main-aside .goal-div .goal-confirm-div .confirm-goal .goal-title{
+    position:absolute;
+    top:20%;
+    left:2%;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.3rem;
+    letter-spacing: 1px;
+    color:#eee;
+}
+
+.home-main-div .aside-div .main-aside .goal-div .goal-confirm-div .which-exercise input{
+    position:absolute;
+    top:50%;
+    left:2%;
+    width:55%;
+    height:35%;
+    background:transparent;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.3rem;
+    letter-spacing: 1px;
+    color:#eee;
+}
+
+.home-main-div .aside-div .main-aside .goal-div .goal-confirm-div .which-exercise input:focus{
+    outline:none;
+}
+
+.home-main-div .aside-div .main-aside .goal-div .goal-confirm-div .how-often{
+    top:20%;
+}
+
+.home-main-div .aside-div .main-aside .goal-div .goal-confirm-div .how-often select,
+.home-main-div .aside-div .main-aside .goal-div .goal-confirm-div .for-how-long select{
+    position:absolute;
+    top:50%;
+    left:2%;
+    width:55%;
+    height:35%;
+}
+
+.home-main-div .aside-div .main-aside .goal-div .goal-confirm-div .for-how-long{
+    top:40%;
+}
+
+.home-main-div .aside-div .main-aside .goal-div .goal-confirm-div .confirm-goal{
+    top:60%;
+}
+
+.home-main-div .aside-div .main-aside .goal-div .goal-confirm-div .confirm-goal .goal-info{
+    position:absolute;
+    top:45%;
+    left:2%;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+    color:#eee;
+}
+
+.home-main-div .aside-div .main-aside .goal-div .goal-confirm-div .confirm-goal button{
+    position:absolute;
+    top:35%;
+    right:2%;
+    cursor:pointer;
+}
+
+/* REMINDER DIV */
+.home-main-div .aside-div .main-aside .reminder-div .remind-me-txt{
+    position:absolute;
+    top:5%;
+    left:5%;
+    width:90%;
+    height:10%;
+    background:transparent;
+    border:none;
+    border-bottom:1px solid black;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.3rem;
+    letter-spacing: 1px;
+    color:#eee;
+    font-weight: 100;
+}
+
+.home-main-div .aside-div .main-aside .reminder-div .remind-me-txt:focus{
+    outline:none;
+}
+
+.home-main-div .aside-div .main-aside .reminder-div .time-select,
+.home-main-div .aside-div .main-aside .reminder-div .repeat-select{
+    position:absolute;
+    top:20%;
+    left:5%;
+    width:90%;
+    height:10%;
+    text-align:center;
+    background:transparent;
+    border:none;
+    border-bottom:1px solid black;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.3rem;
+    letter-spacing: 1px;
+    color:#eee;
+    font-weight: 100;
+}
+
+.home-main-div .aside-div .main-aside .reminder-div .repeat-select{
+    top:35%;
+}
+
+.home-main-div .aside-div .main-aside .reminder-div .time-select option,
+.home-main-div .aside-div .main-aside .reminder-div .repeat-select option{
+    color:black;
+}
+
+.home-main-div .aside-div .main-aside .reminder-div .time-select:focus,
+.home-main-div .aside-div .main-aside .reminder-div .repeat-select:focus{
+    outline:none;
+}
+
+.home-main-div .aside-div .main-aside .reminder-div .confirm-goal{
+    position:absolute;
+    top:45%;
+    left:2.5%;
+    width:95%;
+    height:20%;
+    border:none;
+    border-bottom:1px solid black;
+}
+
+.home-main-div .aside-div .main-aside .reminder-div .confirm-goal .goal-title{
+    position:absolute;
+    top:20%;
+    left:2%;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.3rem;
+    letter-spacing: 1px;
+    color:#eee;
+}
+
+.home-main-div .aside-div .main-aside .reminder-div .confirm-goal .goal-info{
+    position:absolute;
+    top:45%;
+    left:2%;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+    color:#eee;
+}
+
+.home-main-div .aside-div .main-aside .reminder-div .confirm-goal button{
+    position:absolute;
+    top:35%;
+    right:2%;
+    cursor:pointer;
+}
+
+/* .home-main-div .aside-div .main-aside .reminder-div button{
+    position:absolute;
+    top:50%;
+    width:95%;
+    left:2.5%;
+    cursor:pointer;
+} */
+
+/* TASK DIV */
+.home-main-div .aside-div .main-aside .task-div .add-title-txt,
+.home-main-div .aside-div .main-aside .task-div .add-details-txt{
+    position:absolute;
+    top:15%;
+    left:5%;
+    width:90%;
+    height:10%;
+    background:transparent;
+    border:none;
+    border-bottom:1px solid black;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.3rem;
+    letter-spacing: 1px;
+    color:#eee;
+    font-weight: 100;
+}
+
+.home-main-div .aside-div .main-aside .task-div .add-details-txt{
+    top:25%;
+}
+
+.home-main-div .aside-div .main-aside .task-div .add-title-txt:focus,
+.home-main-div .aside-div .main-aside .task-div .add-details-txt:focus{
+    outline:none;
+}
+
+.home-main-div .aside-div .main-aside .task-div .time-select,
+.home-main-div .aside-div .main-aside .task-div .repeat-select{
+    position:absolute;
+    top:35%;
+    left:5%;
+    width:90%;
+    height:10%;
+    text-align:center;
+    background:transparent;
+    border:none;
+    border-bottom:1px solid black;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.3rem;
+    letter-spacing: 1px;
+    color:#eee;
+    font-weight: 100;
+}
+
+.home-main-div .aside-div .main-aside .task-div .repeat-select{
+    top: 45%;
+}
+
+.home-main-div .aside-div .main-aside .task-div .time-select option,
+.home-main-div .aside-div .main-aside .task-div .repeat-select option{
+    color:black;
+}
+
+.home-main-div .aside-div .main-aside .task-div .time-select:focus,
+.home-main-div .aside-div .main-aside .task-div .repeat-select:focus{
+    outline:none;
+}
+
+/* MAIN ASIDE SCHEDS */
+
+.home-main-div .aside-div .main-aside-scheds{
+    width:100%;
+    height:100%;
+    background: #2a2b2dff;
+    /* background: pink; */ 
+    overflow-y: scroll; 
+    display:none;
+}
+
+.home-main-div .aside-div .main-aside-scheds .scheds-div{
+    position:relative;
+    left:2.5%;
+    width:95%;
+    height:20%;
+    border-bottom:1px solid black;
+    font-family: Arial, Helvetica, sans-serif;
+    letter-spacing: 1px;
+    color:#eee;
+}
+
+.home-main-div .aside-div .main-aside-scheds .scheds-div .sched-txt{
+    position:absolute;
+    top:5%;
+    font-size: 1.3rem;
+}
+
+.home-main-div .aside-div .main-aside-scheds .scheds-div .sched-title{
+    position:absolute;
+    top:25%;
+    font-size: 1.1rem;
+}
+
+.home-main-div .aside-div .main-aside-scheds .scheds-div .sched-info{
+    position:absolute;
+    top:45%;
+    font-size: 0.9rem;
+}
+
+.home-main-div .aside-div .main-aside-scheds .scheds-div button{
+    position:absolute;
+    bottom:5%;
+    width:100%;
+    height:25%;
+}
+
+.home-main-div .aside-div .no-tasks-div{
+    position:absolute;
+    top:40%;
+    left:10%;
+    width:80%;
+    height:20%;
+    /* border:1px solid white; */
+    display:none;
+}
+
+.home-main-div .aside-div .no-tasks-div label{
+    position:absolute;
+    top:40%;
+    left:0;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1rem;
+    letter-spacing: 1px;
+    color:#eee;
+    z-index: 1;
+    opacity: 0.5;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.home-main-div .aside-div .no-tasks-div img{
+    position:absolute;
+    top:10%;
+    left:30%;
+    width:40%;
+    height:80%;
+    opacity: 0.2;
+    cursor: pointer;
+    transition:0.5s;
+}
+
+.home-main-div .aside-div .no-tasks-div img:hover{
+    opacity: 1;
+}
+
+.home-main-div .home-div-body{
+    position:absolute;
+    top:8%;
+    left:25%;
+    width:75%;
+    height:100%;
+    /* background: green; */
+}
+
+
+.home-main-div .home-div-body .container{
+    width: 100%;
+    height: 100%;
+    color: #eee;
+    /* display:flex;
+    justify-content:center;
+    align-items:center; */
+}
+
+.home-main-div .home-div-body .container .calendar{
+    position: absolute;
+    top:5%;
+    left:10%;
+    width:80%;
+    height:82%;
+    background-color: #222227;
+    box-shadow: 0 0.5rem 3rem rgba(0,0,0,0.4);
+}
+
+.home-main-div .home-div-body .container .calendar .month{
+    width:100%;
+    height:30%;
+    background-color:#275EA3;
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 2rem;
+    text-align: center;
+    text-shadow: 0 .3rem .5rem rgba(0,0,0,0.5);
+}
+
+.home-main-div .home-div-body .container .calendar .month i{
+    font-size:2.5rem;
+    cursor: pointer;
+}
+
+.home-main-div .home-div-body .container .calendar .month h1{
+    font-size: 3rem;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing:0.2rem;
+    margin-bottom: 1rem;
+}
+
+.home-main-div .home-div-body .container .calendar .month p{
+    font-size: 1.6rem;
+}
+
+.home-main-div .home-div-body .container .calendar .weekdays{
+    width:100%;
+    height:5rem;
+    padding: 0 0.4rem;
+    display:flex;
+    align-items:center;
+}
+
+.home-main-div .home-div-body .container .calendar .weekdays div{
+    font-size: 1.5rem;
+    font-weight: 400;
+    letter-spacing: 0.1rem;
+    width: calc(50rem/7);
+    display:flex;
+    justify-content:center;
+    align-items: center;
+    text-shadow: 0 .3rem .5rem rgba(0,0,0,0.5);
+}
+
+.home-main-div .home-div-body .container .calendar .days{
+    width:100%;
+    display:flex;
+    flex-wrap: wrap;
+    padding: 0.2rem;
+}
+
+.home-main-div .home-div-body .container .calendar .days div{
+    font-size: 1.4rem;
+    margin: 0.3rem;
+    width: calc(44.2rem/7);
+    height: 2.5rem;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    text-shadow: 0 .3rem .5rem rgba(0,0,0,0.5);
+    transition: background-color 0.2s;
+    /* border:1px solid white; */
+    /* background: url(./imgs/main_imgs/asterisk.png); */
+    /* background-size: 15% 25%;
+    background-position:right;
+    background-repeat: no-repeat; */
+    position:relative;
+}
+
+.home-main-div .home-div-body .container .calendar .days div img{
+    position:absolute;
+    bottom:5%;
+    right:0;
+    width:20%;
+    height:25%;
+}
+
+.home-main-div .home-div-body .container .calendar .days div:hover:not(.today){
+    background-color:#262626;
+    border: .2rem solid #777;
+    cursor: pointer;
+}
+
+.home-main-div .home-div-body .container .calendar .days .prev-date,
+.home-main-div .home-div-body .container .calendar .days .next-date{
+    opacity: 0.5;
+}
+
+.home-main-div .home-div-body .container .calendar .days .today{
+    background-color: #167e56;
+    cursor: pointer;
+}
+
+
+
+/* $mobile : 576px;
+$tablet : 768px;
+$laptop : 992px;
+$desktop : 1200px; */
+
+/* SIGN COMPONENTS */
+@media (max-width: 576px){
+    .home-div #home-img{
+        width:100%;
+    }
+
+    .home-div #title-div{
+        top:20%;
+        left:0;
+        width:100%;
+        font-size: 3.5rem;
+        text-align: center;
+
+        /* display:none; */
+
+    }
+
+    .home-div .login-div{
+        display:none;
+
+        /* display:block; */
+
+        top:22%;
+        left:10%;
+        width:80%;
+        height:55%;
+    }
+
+    .home-div .login-div #hr-1,
+    .home-div .login-div #hr-2{
+        width:27%;
+    }
+
+    .home-div .login-div #hr-sign-in-lbl{
+        left:41%;
+    }
+
+    .home-div .login-div #sign-up-lbl{
+        display:none;
+    }
+
+    .home-div .btn-div-mobile{
+        display:block;
+        position: absolute;
+        bottom:5%;
+        left:10%;
+        width:80%;
+        height:6%;
+    }
+
+    .home-div .btn-div-mobile #sign-up-btn-mobile,
+    .home-div .btn-div-mobile #sign-in-btn-mobile{
+        width:40%;
+    }
+
+    .home-div .btn-div-mobile #sign-up-btn-mobile{
+        float:right;
+    }
+
+    .home-div #back-btn-mobile{
+        display:block;
+        position: absolute;
+        top:5%;
+        left:5%;
+        width:10%;
+        height:5%;
+        background: url('./imgs/back_btn_mobile.png');
+        background-size: 100% 100%;
+        background-position: center;
+    }
+
+    /* HOME MAIN COMPONENTS ******************************************************************/
+    
+    .home-main-div .home-header img{
+        left:2%;
+        width:10%;
+    }
+    
+    .home-main-div .side-header{
+        width:83%;
+    }
+
+    .home-main-div .aside-div{
+        width:83%;
+    }
+
+    .home-main-div .aside-div .no-tasks-div label{
+        font-size:0.96rem;
+    }
+
+    .home-main-div .aside-div .no-tasks-div img{
+        left:30%;
+        width:45%;
+    }
+
+    .home-main-div .home-div-body{
+        width:100%;
+        left:0%;
+    }
+
+    .home-main-div .home-div-body .container .calendar{
+        width:100%;
+        height:100%;
+        top:0;
+        left:0;
+    }
+
+    .home-main-div .home-div-body .container .calendar .month{
+        height:20%;
+    }
+
+    .home-main-div .home-div-body .container .calendar .weekdays{
+        padding: 0 0.2rem;
+    }
+
+    .home-main-div .home-div-body .container .calendar .weekdays div{
+        font-size: 1.2rem;
+    }
+
+    .home-main-div .home-div-body .container .calendar .days div{
+        font-size: 1.2rem;
+        margin:0;
+        width: calc(23rem/7);
+        height: 4rem;
+    }
+}

@@ -1,4 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-ReactDOM.render(<h1>Kyla Denzelle Samson Olmo</h1>, document.getElementById('root'))
+import App from './App';
+
+// style
+import './index.css'
+
+ReactDOM.render(<App />, document.getElementById('root')) 
