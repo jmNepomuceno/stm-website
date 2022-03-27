@@ -61,7 +61,7 @@ class Main extends React.Component {
             user_scheds : []
         }
     }
-
+    
     componentDidMount() {
         this.renderCalendar()
     }
@@ -187,9 +187,12 @@ class Main extends React.Component {
             }else{
                 styles.no_tasks_display = "block"
                 styles.no_tasks_text = `No Information for this day yet`
+                //styles.no_tasks_text = `No Information for ${this.state.months[this.state.date.getMonth()]} ${this.state.day_clicked} yet`
                 styles.no_task_label_left = "0"
                 styles.no_task_label_top = "40%"
                 styles.main_aside_scheds_display = "none"
+                styles.main_aside_display = "none"
+                
             }
             
             this.setState({styles})
@@ -308,26 +311,61 @@ class Main extends React.Component {
         this.setState({styles})
 
     }
-
     render() { 
-        let acc_username = this.props.args.users_account[0].username
-        //const lastDay = new Date(this.state.date.getFullYear(),this.state.date.getMonth() + 1,0).getDate();
-        //console.log(lastDay)
+
+        let acc_curr_index = 0
+        for(let i = 0; i < this.props.args.users_account.length; i++){
+            if(this.props.args.users_account[i].username === this.props.args.onAccCurr.username &&
+                this.props.args.users_account[i].password === this.props.args.onAccCurr.password){
+                    acc_curr_index = i
+                }
+        }
+        let acc_username = this.props.args.users_account[acc_curr_index].username
+        //console.log(this.props.args.userAcc_counter)
         
         // for asterisk
         let per_week = 1
+        //console.log(this.props.args.user_goals)
+
+        // let arr_per_acc = this.props.args.user_goals.filter(val=>{
+        //     return(
+        //         val.user_counter === acc_curr_index
+        //     )
+        // })
+
+        let arr_per_acc = [
+            {
+                user_counter : "",
+                year : "",
+                month : "",
+                day : "",
+                time : "",
+                often : "",
+                title : ""
+            }
+        ]
+        for(let i = 0; i < this.props.args.user_goals.length; i++){
+            if(this.props.args.user_goals[i].user_counter === acc_curr_index){
+                arr_per_acc.push(this.props.args.user_goals[i])
+            }
+        }
+
+        console.log(arr_per_acc)
+        //console.log( this.props.args.user_goals,this.props.args.user_goals_counter )
+
         let days_forloop_cont = this.state.days_forloop.map(val => {
-            let how_often = this.props.args.user_goals[this.props.args.user_goals_counter].often
-        
+            //let how_often = this.props.args.user_goals[this.props.args.user_goals_counter].often
+            let how_often = arr_per_acc[arr_per_acc.length - 1].often
+            
             let if_three = false, if_five = false, if_everyday = false
-            for(let i = 0; i < this.props.args.user_goals.length; i++){
-                if(this.props.args.user_goals[i].often === "3 times a week"){
+            for(let i = 0; i < arr_per_acc.length; i++){
+                if(arr_per_acc[i].often === "3 times a week"){
                     if_three = true
                 }
-                if(this.props.args.user_goals[i].often === "5 times a week"){
+                if(arr_per_acc[i].often === "5 times a week"){
                     if_five = true
                 }
-                if(this.props.args.user_goals[i].often === "Every day"){
+                if(arr_per_acc[i].often === "Every day"){
                     if_everyday = true
                 }
             }
@@ -341,7 +379,7 @@ class Main extends React.Component {
             }else if(if_everyday){
                 how_often = "Every day"
             }
-
+            
             let asterisk_often
             
             if(how_often === "Every day"){
@@ -427,12 +465,14 @@ class Main extends React.Component {
         }
 
         let user_scheds = []
-        //console.log(this.props.args.user_goals)
-        for(let i = 0; i < this.props.args.user_goals.length; i++){
-            if(this.props.args.user_goals[i].user_counter === 0){
-                user_scheds.push(this.props.args.user_goals[i])
+        console.log(acc_curr_index)
+        for(let i = 0; i < arr_per_acc.length; i++){
+            if(arr_per_acc[i].user_counter === acc_curr_index){
+                user_scheds.push(arr_per_acc[i])
             }
         }
+
+        console.log(user_scheds)
 
         let user_scheds_once = user_scheds.filter((val)=>{
             return val.often === "Once a week"
@@ -521,24 +561,33 @@ class Main extends React.Component {
 
         let schedsComponents 
         for(let i = 0; i <= user_scheds.length - 1; i++){
-            this.state.date.setDate(this.state.day_clicked)
-            let day_index = this.state.date.getDay()
-            
+            let new_Date = this.state.date
+            new_Date.setDate(this.state.day_clicked)
+            let day_index = new_Date.getDay()
+            //console.log(day_index)
             if(day_index === 0){
-
                 if(schedsComponents_thrice.length === 0 && schedsComponents_five.length === 0 && schedsComponents_every.length === 0){
                     schedsComponents = schedsComponents_once 
-                }else if(schedsComponents_thrice.length !== 0 && schedsComponents_five.length === 0 && schedsComponents_every.length === 0){
+                }
+                else if(schedsComponents_thrice.length !== 0 && schedsComponents_five.length === 0 && schedsComponents_every.length === 0){
                     schedsComponents = schedsComponents_once.concat(schedsComponents_thrice)
-                }else if(schedsComponents_thrice.length === 0 && schedsComponents_five.length !== 0 && schedsComponents_every.length === 0){
+                }
+                else if(schedsComponents_thrice.length === 0 && schedsComponents_five.length !== 0 && schedsComponents_every.length === 0){
                     schedsComponents = schedsComponents_once.concat(schedsComponents_five)
-                }else if(schedsComponents_thrice.length === 0 && schedsComponents_five.length === 0 && schedsComponents_every.length !== 0){
+                }
+                else if(schedsComponents_thrice.length === 0 && schedsComponents_five.length === 0 && schedsComponents_every.length !== 0){
                     schedsComponents = schedsComponents_once.concat(schedsComponents_every)
-                }else if(schedsComponents_thrice.length !== 0 && schedsComponents_five.length !== 0 && schedsComponents_every.length === 0){
+                }
+                else if(schedsComponents_thrice.length !== 0 && schedsComponents_five.length !== 0 && schedsComponents_every.length === 0){
                     schedsComponents = schedsComponents_once.concat(schedsComponents_thrice,schedsComponents_five)
-                }else if(schedsComponents_thrice.length === 0 && schedsComponents_five.length !== 0 && schedsComponents_every.length !== 0){
+                }
+                else if(schedsComponents_thrice.length !== 0 && schedsComponents_five.length === 0 && schedsComponents_every.length !== 0){
+                    schedsComponents = schedsComponents_once.concat(schedsComponents_thrice,schedsComponents_every)
+                }
+                else if(schedsComponents_thrice.length === 0 && schedsComponents_five.length !== 0 && schedsComponents_every.length !== 0){
                     schedsComponents = schedsComponents_once.concat(schedsComponents_five,schedsComponents_every)
-                }else if(schedsComponents_thrice.length !== 0 && schedsComponents_five.length !== 0 && schedsComponents_every.length !== 0){
+                }
+                else if(schedsComponents_thrice.length !== 0 && schedsComponents_five.length !== 0 && schedsComponents_every.length !== 0){
                     schedsComponents = schedsComponents_once.concat(schedsComponents_thrice,schedsComponents_five,schedsComponents_every)
                 }
             }
@@ -581,7 +630,7 @@ class Main extends React.Component {
                 <main className="home-main-div">
 
                     <header className="home-header">
-                        <Link to={'/home'}>
+                        <Link to={'/'}>
                             <label style={{display : this.state.styles.log_out_display}}>Log out</label>
                         </Link>
                         <img 
@@ -633,6 +682,8 @@ class Main extends React.Component {
                             className="main-aside"
                             style={{display : this.state.styles.main_aside_display}}
                         >
+
+                            <label className="goal-header">Choose your Goal</label>
                             
                             {/* GOAL DIVISION */}
                             <div 
@@ -806,6 +857,13 @@ class Main extends React.Component {
                             </div>
                         </div>
                     </div>
+
+                    {/* SENDING EMAIL */}
+                    {/* <form className="form-email">
+                        <label className="goal-what"></label>
+                        <label className="goal-duration"></label>
+                    </form>
+                    <script src="https://smtpjs.com/v3/smtp.js"></script> */}
                 </main>
             </React.Fragment>
         );

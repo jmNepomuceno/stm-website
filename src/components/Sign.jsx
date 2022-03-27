@@ -91,6 +91,30 @@ class Sign extends React.Component {
 
     }
 
+    handleFinalLogInClick = (obj) =>{
+        //console.log(this.props.args.onUserAcc_counter, this.state.sign.Log_in_btn_txt)
+        let valid_login = false
+        if(this.props.args.onUserAcc_counter === 0 && this.state.sign.Log_in_btn_txt === "Log In"){
+            alert("You have no account yet. Sign up first.")
+        }
+        else if(this.props.args.onUserAcc_counter > 0 && this.state.sign.Log_in_btn_txt === "Log In"){
+            for(let i = 0; i < this.props.args.onUserAccounts.length; i++){
+                //console.log(this.props.args.onUserAccounts[i].username, obj.username)
+                //console.log(this.props.args.onUserAccounts[i].password, obj.password)
+                if(this.props.args.onUserAccounts[i].username === obj.username &&
+                    this.props.args.onUserAccounts[i].password === obj.password){
+                        valid_login = true
+                    }
+            }
+        }
+        //console.log(valid_login)
+        if(valid_login || this.state.sign.Log_in_btn_txt === "Sign In"){
+            this.props.args.onLogInClick(obj)
+        }
+
+        this.props.args.onUserCurrAccounts(obj)
+    }
+
     render() { 
 
         return(
@@ -143,10 +167,12 @@ class Sign extends React.Component {
                                 type="submit" 
                                 className="btn btn-primary" 
                                 id="login-btn"
-                                onClick = {() => this.props.args.onLogInClick({
-                                    username : this.state.username,
-                                    password : this.state.password
-                                })}>
+                                onClick = {() => this.handleFinalLogInClick(
+                                    {
+                                        username: this.state.username,
+                                        password: this.state.password
+                                    }
+                                )}>
 
                                 {this.state.sign.Log_in_btn_txt}
                             </button>

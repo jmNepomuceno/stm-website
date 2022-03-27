@@ -10,9 +10,14 @@ class App extends React.Component {
         super()
         this.state = {
             users_accounts_counter : 0,
+            users_curr : {
+                username: "",
+                password: ""
+            },
             users_accounts : [
                 {
-                    username : "Kyla"
+                    username : "Kyla",
+                    password : "Olmo"
                 }
             ],   
             user_goals_counter : 0,
@@ -27,34 +32,37 @@ class App extends React.Component {
                     title : ""
                 }
             ],
-            user_reminders_counter : 0,
-            users_reminders : [
-                {
-                    user_counter : "",
-                    year : "",
-                    month : "",
-                    day : "",
-                    time : "",
-                    often : "",
-                    title : ""
-                }
-            ]
         }
     }
 
     handleLogInClick = (obj) => {
-        this.setState({ users_accounts: [...this.state.users_accounts, obj ] })
-        this.setState({users_accounts_counter : this.state.users_accounts_counter + 1})
+        let valid = false
+        for(let i = 0; i < this.state.users_accounts.length; i++){
+            if(this.state.users_accounts[i].username === obj.username &&
+                this.state.users_accounts[i].password === obj.password){
+                    valid = false
+                    break;
+                }else{
+                    valid = true
+                }
+        }
+        //console.log(valid)
+        if(valid){
+            this.setState({ users_accounts: [...this.state.users_accounts, obj ] })
+            this.setState({users_accounts_counter : this.state.users_accounts_counter + 1})
+        }
+        
+        this.handleUserCurrIndex()
+    }
+
+    handleUserCurrIndex = (obj) => {
+        //console.log(obj)
+        this.setState({users_curr : obj})
     }
 
     handleGoalConfirmClick = (obj) => {
         this.setState({users_goals : [...this.state.users_goals, obj]})
         this.setState({user_goals_counter : this.state.user_goals_counter + 1})
-    }
-
-    handleReminderConfirmClick = (obj) => {
-        this.setState({users_reminders : [...this.state.users_reminders, obj]})
-        this.setState({user_reminders_counter : this.state.user_reminders_counter + 1})
     }
 
     handleGoalDoneClick = (obj) =>{
@@ -82,16 +90,22 @@ class App extends React.Component {
     }
 
     render() { 
-        //console.log(this.state.users_reminders)
+        //console.log(this.state.users_accounts_counter)
+        //console.log(this.state.users_accounts)
+        //console.log(this.state.users_goals)
+        //console.log(this.state.user_goals_counter)
         return (
             <Router basename='stm-website'>
                 <React.Fragment>
                     <Routes>
-                        <Route path="/home" exact element={
+                        <Route path="/" exact element={
                             <React.Fragment>
                                 <Sign 
                                     args = {
                                         {
+                                            onUserAcc_counter : this.state.users_accounts_counter,
+                                            onUserAccounts : this.state.users_accounts,
+                                            onUserCurrAccounts : this.handleUserCurrIndex,
                                             onLogInClick : this.handleLogInClick
                                         }
                                     }
@@ -99,19 +113,17 @@ class App extends React.Component {
                             </React.Fragment>
                         } />
 
-                        <Route path="/" exact element={
+                        <Route path="/home" exact element={
                             <Main 
                                 args = {
                                     {
                                         userAcc_counter : this.state.users_accounts_counter,
                                         users_account : this.state.users_accounts,
+                                        onAccCurr : this.state.users_curr,
                                         user_goals_counter : this.state.user_goals_counter,
                                         user_goals : this.state.users_goals,
                                         onGoalConfirmClick : this.handleGoalConfirmClick,
-                                        onGoalDoneClick : this.handleGoalDoneClick,
-                                        onReminderConfirmClick : this.handleReminderConfirmClick,
-                                        user_reminders_counter : this.state.user_reminders_counter,
-                                        user_reminders : this.state.users_reminders,    
+                                        onGoalDoneClick : this.handleGoalDoneClick,  
                                     }
                                 }
                             />
