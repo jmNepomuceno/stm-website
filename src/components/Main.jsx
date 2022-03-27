@@ -294,7 +294,14 @@ class Main extends React.Component {
         goals.month = this.state.date.getMonth()
         goals.day = this.state.day_clicked
         //goals.user_counter = this.props.args.userAcc_counter - 1
-        goals.user_counter = this.props.args.userAcc_counter
+        let acc_curr_index = 0
+        for(let i = 0; i < this.props.args.users_account.length; i++){
+            if(this.props.args.users_account[i].username === this.props.args.onAccCurr.username &&
+                this.props.args.users_account[i].password === this.props.args.onAccCurr.password){
+                    acc_curr_index = i
+                }
+        }
+        goals.user_counter = acc_curr_index
         goals.key = goals.key += 1
         this.setState({goals})
     }
@@ -350,7 +357,7 @@ class Main extends React.Component {
             }
         }
 
-        console.log(arr_per_acc)
+        console.log("array per account " , arr_per_acc)
         //console.log( this.props.args.user_goals,this.props.args.user_goals_counter )
 
         let days_forloop_cont = this.state.days_forloop.map(val => {
@@ -465,14 +472,14 @@ class Main extends React.Component {
         }
 
         let user_scheds = []
-        console.log(acc_curr_index)
+        console.log("account current index" , acc_curr_index)
         for(let i = 0; i < arr_per_acc.length; i++){
             if(arr_per_acc[i].user_counter === acc_curr_index){
                 user_scheds.push(arr_per_acc[i])
             }
         }
 
-        console.log(user_scheds)
+        console.log("user_scheds" , user_scheds)
 
         let user_scheds_once = user_scheds.filter((val)=>{
             return val.often === "Once a week"

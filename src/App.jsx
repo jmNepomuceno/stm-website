@@ -93,7 +93,7 @@ class App extends React.Component {
         //console.log(this.state.users_accounts_counter)
         //console.log(this.state.users_accounts)
         //console.log(this.state.users_goals)
-        //console.log(this.state.user_goals_counter)
+        console.log(this.state.user_curr_index)
         return (
             <Router basename='stm-website'>
                 <React.Fragment>
