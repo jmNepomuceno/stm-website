@@ -1,0 +1,10 @@
+{
+  "files": {
+    "main.js": "/stm-website/static/js/main.95a3c40d.js",
+    "index.html": "/stm-website/index.html",
+    "main.95a3c40d.js.map": "/stm-website/static/js/main.95a3c40d.js.map"
+  },
+  "entrypoints": [
+    "static/js/main.95a3c40d.js"
+  ]
+}
