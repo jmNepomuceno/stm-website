@@ -14,10 +14,11 @@ class App extends React.Component {
                 username: "",
                 password: ""
             },
+            user_curr_index : 0,
             users_accounts : [
                 {
-                    username : "Kyla",
-                    password : "Olmo"
+                    username : "",
+                    password : ""
                 }
             ],   
             user_goals_counter : 0,
@@ -32,6 +33,9 @@ class App extends React.Component {
                     title : ""
                 }
             ],
+            user_goals_points : [
+                0
+            ]
         }
     }
 
@@ -56,7 +60,6 @@ class App extends React.Component {
     }
 
     handleUserCurrIndex = (obj) => {
-        //console.log(obj)
         this.setState({users_curr : obj})
     }
 
@@ -67,7 +70,6 @@ class App extends React.Component {
 
     handleGoalDoneClick = (obj) =>{
         let index = 0
-        console.log(this.state.users_goals)
         for(let i = 0; i < this.state.users_goals.length; i++){
             // console.log(obj.title , this.state.users_goals[i].title)
             if(obj.month === this.state.users_goals[i].month && 
@@ -84,7 +86,39 @@ class App extends React.Component {
                 users_goals.push(this.state.users_goals[i])
             }
         }
+        
+        let points_index = 0
+        for(let i = 0; i < this.state.users_accounts.length; i++){
+            //console.log(i , this.state.users_curr.username, this.state.users_accounts[i].username)
+            if(this.state.users_curr.username === this.state.users_accounts[i].username &&
+                this.state.users_curr.password === this.state.users_accounts[i].password){
+                    points_index = i
+                    break;
+            }    
+        }
 
+        let points_array = this.state.user_goals_points
+        let points
+
+        switch(obj.time) {
+            case "15 minutes": points = 10; break;
+            case "30 minutes": points = 20; break;
+            case "1 hour": points = 50; break;
+            case "2 hours": points = 100; break;
+            default: points = 0;
+        }
+
+        if(points_array.length - 1 < points_index){
+            points_array.push(points)
+        }else{
+            for(let i = 0; i < points_array.length; i++){
+                if(i === points_index){
+                    points_array[i] += points
+                }
+            }
+        }
+
+        this.setState({user_goals_points : points_array})
         this.setState({users_goals : users_goals})
         this.setState({user_goals_counter : this.state.user_goals_counter - 1})
     }
@@ -124,6 +158,7 @@ class App extends React.Component {
                                         user_goals : this.state.users_goals,
                                         onGoalConfirmClick : this.handleGoalConfirmClick,
                                         onGoalDoneClick : this.handleGoalDoneClick,  
+                                        onUserPoints : this.state.user_goals_points
                                     }
                                 }
                             />

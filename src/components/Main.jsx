@@ -1,5 +1,6 @@
 import React from 'react'
 import  {Link} from 'react-router-dom'
+import emailjs from 'emailjs-com'
 class Main extends React.Component {
     
     constructor(){
@@ -318,6 +319,18 @@ class Main extends React.Component {
         this.setState({styles})
 
     }
+
+    handleSendEmail = (e) =>{
+        e.preventDefault();
+
+        emailjs.sendForm('service_cv55nuw', 'template_lchtv91', e.target, 'fC-rvQbRASsOoS3po')
+        .then((result) => {
+            console.log(result.text);
+        }, (error) => {
+            console.log(error.text);
+        });
+        e.target.reset()
+    }
     render() { 
 
         let acc_curr_index = 0
@@ -328,7 +341,7 @@ class Main extends React.Component {
                 }
         }
         let acc_username = this.props.args.users_account[acc_curr_index].username
-        //console.log(this.props.args.userAcc_counter)
+        //console.log(acc_curr_index)
         
         // for asterisk
         let per_week = 1
@@ -357,7 +370,7 @@ class Main extends React.Component {
             }
         }
 
-        console.log("array per account " , arr_per_acc)
+        //console.log("array per account " , arr_per_acc)
         //console.log( this.props.args.user_goals,this.props.args.user_goals_counter )
 
         let days_forloop_cont = this.state.days_forloop.map(val => {
@@ -472,14 +485,14 @@ class Main extends React.Component {
         }
 
         let user_scheds = []
-        console.log("account current index" , acc_curr_index)
+        //console.log("account current index" , acc_curr_index)
         for(let i = 0; i < arr_per_acc.length; i++){
             if(arr_per_acc[i].user_counter === acc_curr_index){
                 user_scheds.push(arr_per_acc[i])
             }
         }
 
-        console.log("user_scheds" , user_scheds)
+        //console.log("user_scheds" , user_scheds)
 
         let user_scheds_once = user_scheds.filter((val)=>{
             return val.often === "Once a week"
@@ -624,8 +637,8 @@ class Main extends React.Component {
             }
         }
         
-        // console.log(this.state.reminders)
-
+        console.log(this.props.args.onUserPoints[acc_curr_index])
+        let points = (this.props.args.onUserPoints[acc_curr_index] === undefined) ? 0 : this.props.args.onUserPoints[acc_curr_index]
         return (
             <React.Fragment>
                 <link
@@ -646,6 +659,12 @@ class Main extends React.Component {
                             style={nav_styles}
                             onClick={this.handleNavBarClick}
                         />
+
+                        <div className="goal-points-div">
+                            <label className="gp-lbl">Goal Points: </label>
+                            <label className="gs-lbl">{points}</label>
+
+                        </div>
                     </header>
 
                     <aside 
@@ -788,11 +807,20 @@ class Main extends React.Component {
                                             {this.state.goals.time}
                                         </label>
                                         <button 
-                                            className="btn btn-success"
+                                            className="btn btn-success add-btn"
                                             onClick={this.handleGoalFinalConfirm}
                                         >
                                             Add</button>
                                     </div>
+                                    <form onSubmit={this.handleSendEmail}>
+                                        <div className="email-div">
+                                            <input className="subject" type="text" name="subject" value="Your Goal" />
+                                            <input className="goalTitle" type="text" name="goalTitle" value={this.state.goals.title} />
+                                            <textarea name="schedule" value={`Schedule set on: ${this.state.goals.often} ${this.state.goals.time} `} ></textarea>
+                                            <input className="user_email" type="text" name="user_email" placeholder="Your e-mail" required />
+                                            <button type="submit" className="btn btn-primary">Send a copy on my Email</button>
+                                        </div>
+                                    </form>
                                 </div>
 
                             </div>

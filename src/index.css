@@ -182,6 +182,34 @@ input[type=password]{
     height:80%;
 }
 
+.home-main-div .goal-points-div{
+    position:absolute;
+    top:5%;
+    right:15%;
+    width:15%;
+    height:90%;
+    background: #2a2b2dff;
+    border-radius: 5px;
+}
+
+.home-main-div .goal-points-div label{
+    position:absolute;
+    top:25%;
+    color:#f2f2f2;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.2rem;
+    letter-spacing: 1px;
+}
+
+.home-main-div .goal-points-div .gp-lbl{
+    left:5%;
+}
+
+.home-main-div .goal-points-div .gs-lbl{
+    right:5%;
+    color: #2da8d8ff;
+}
+
 .home-main-div .side-header{
     position:absolute;
     width:25%;
@@ -405,12 +433,51 @@ input[type=password]{
     color:#eee;
 }
 
-.home-main-div .aside-div .main-aside .goal-div .goal-confirm-div .confirm-goal button{
+.home-main-div .aside-div .main-aside .goal-div .goal-confirm-div .confirm-goal .add-btn{
     position:absolute;
     top:35%;
     right:2%;
     cursor:pointer;
 }
+
+.home-main-div .aside-div .main-aside .goal-div .goal-confirm-div form{
+    position:absolute;
+    top:82%;
+    left:2.5%;
+    width:95%;
+    height:17%;
+    /* border:1px solid white; */
+}
+
+.home-main-div .aside-div .main-aside .goal-div .goal-confirm-div form .subject,
+.home-main-div .aside-div .main-aside .goal-div .goal-confirm-div form .goalTitle,
+.home-main-div .aside-div .main-aside .goal-div .goal-confirm-div form textarea{
+    display:none;
+}
+
+.home-main-div .aside-div .main-aside .goal-div .goal-confirm-div form .user_email{
+    position:absolute;
+    top:0%;
+    width:100%;
+    height:45%;
+    background:transparent;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.3rem;
+    letter-spacing: 1px;
+    color:#eee;
+}
+
+.home-main-div .aside-div .main-aside .goal-div .goal-confirm-div form .user_email:focus{
+    outline:none;
+}
+
+.home-main-div .aside-div .main-aside .goal-div .goal-confirm-div form button{
+    position:absolute;
+    bottom:0;
+    width:100%;
+}
+
+
 
 /* REMINDER DIV */
 .home-main-div .aside-div .main-aside .reminder-div .remind-me-txt{
