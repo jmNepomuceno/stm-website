@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/stm-website/static/css/main.78625d46.css",
-    "main.js": "/stm-website/static/js/main.24b727e1.js",
+    "main.css": "/stm-website/static/css/main.6eb276bc.css",
+    "main.js": "/stm-website/static/js/main.21406fdd.js",
     "static/media/index_bg_2.png": "/stm-website/static/media/index_bg_2.ec5a59b7f659592ae280.png",
     "static/media/goal-organize.jpg": "/stm-website/static/media/goal-organize.b172ff1abed2b93e5bb1.jpg",
     "static/media/goal-fam-friends.jpg": "/stm-website/static/media/goal-fam-friends.e4a2d437ed96a43d878f.jpg",
@@ -12,11 +12,11 @@
     "static/media/goal-skill.jpg": "/stm-website/static/media/goal-skill.41bcc99ceadc77b28da5.jpg",
     "static/media/asterisk.png": "/stm-website/static/media/asterisk.6942fab52b19020bd421.png",
     "index.html": "/stm-website/index.html",
-    "main.78625d46.css.map": "/stm-website/static/css/main.78625d46.css.map",
-    "main.24b727e1.js.map": "/stm-website/static/js/main.24b727e1.js.map"
+    "main.6eb276bc.css.map": "/stm-website/static/css/main.6eb276bc.css.map",
+    "main.21406fdd.js.map": "/stm-website/static/js/main.21406fdd.js.map"
   },
   "entrypoints": [
-    "static/css/main.78625d46.css",
-    "static/js/main.24b727e1.js"
+    "static/css/main.6eb276bc.css",
+    "static/js/main.21406fdd.js"
   ]
 }
