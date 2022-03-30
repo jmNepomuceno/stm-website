@@ -131,7 +131,9 @@ class Sign extends React.Component {
                     id="title-div"
                     style={{display : this.state.sign.title_div_txt_display}}
                 >
-                    Scheduling & Task Monitoring Website
+                    Get Set Goal... <br/>
+                    <span>Goal Scheduling Website</span>
+                    <hr/>
                 </label>
     
                 <div 
